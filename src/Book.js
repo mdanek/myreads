@@ -1,27 +1,18 @@
 import React, { Component } from 'react';
+import Selector from './Selector';
 
 class Book extends Component {
 
     render () {
-        const { width, height, backgroundImage, shelf, title, author } = this.props.book;
+        const { imageLinks, title, authors } = this.props.book;
         return (
             <div className="book">
                 <div className="book-top">
-                    <div className="book-cover" 
-                    style={{ width: width, height: height, backgroundImage: backgroundImage }}>
-                    </div>
-                    <div className="book-shelf-changer">
-                        <select>
-                            <option value="move" disabled>Move to...</option>
-                            <option value="currentlyReading">Currently Reading</option>
-                            <option value="wantToRead">Want to Read</option>
-                            <option value="read">Read</option>
-                            <option value="none">None</option>
-                        </select>
-                    </div>
+                    <img className="book-cover" src={imageLinks.thumbnail} alt={title}/>
+                    <Selector />
                 </div>
                 <div className="book-title">{title}</div>
-                <div className="book-authors">{author}</div>
+                <div className="book-authors">{authors.map((author) =>(<p key={author}>{author}</p>))}</div>
             </div>
         );
     }
