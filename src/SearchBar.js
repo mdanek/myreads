@@ -10,7 +10,6 @@ render () {
             <input 
               type="text" 
               placeholder="Search by title or author"
-              value={this.props.query}
               onChange={this.props.searchForBook}
             />
           </div>
