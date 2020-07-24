@@ -11,15 +11,11 @@ const shelfList = [
 
 class BookApp extends Component {
 
-state = {
-  books: []
-}
+
 
 componentDidMount() {
   BooksAPI.getAll().then((books) => 
-  this.setState(() => ({
-    books
-  })))
+  this.props.booksState(books))
 }
 
 render () {
@@ -35,7 +31,7 @@ render () {
               (<li key={name}>
                 <Shelf 
                   name={name} 
-                  books={this.state.books}
+                  books={this.props.books}
                 />
               </li>)
             )}

@@ -6,13 +6,8 @@ import Book from './Book';
 class Search extends Component {
 
 state = {
-    books: [],
     query: ''
 }
-
-/*componentDidMount() {
-    this.searchForBook();
-}*/
 
 checkUndefined = (book) => {
     if(typeof book.imageLinks === 'undefined'){
@@ -29,18 +24,8 @@ queryUpdate = (event) => {
     })
 }
 
-searchForBook = (event) => {
-    BooksAPI.search(event.target.value).then((books) => {
-    if (books === 'undefined' || books.error==='empty query') 
-    {
-        this.setState({books: []})
-    } else {
-        this.setState({books: books})
-    }})
-}
-
 render () {
-    this.state.books.map((book) => this.checkUndefined(book));
+    this.props.books.map((book) => this.checkUndefined(book));
     
     return (
         <div className="search-books">
@@ -48,11 +33,11 @@ render () {
                 clickSearch={this.props.clickSearch}
                 query={this.state.query}
                 queryUpdate={this.queryUpdate}
-                searchForBook={this.searchForBook}
+                searchForBook={this.props.searchForBook}
             />
             <div className="search-books-results">
                 <ol className="books-grid">
-                    {this.state.books.map((book) => 
+                    {this.props.books.map((book) => 
                         (<li key={book.id}><Book book={book} />}</li>)
                     )}
                 </ol>
