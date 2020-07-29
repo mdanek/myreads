@@ -17,16 +17,19 @@ booksState = (books) => {
 
 clickSearch = (value) => {
   this.setState(() => ({showSearchPage: value }));
+  this.setState({books: []})
 }
 
 searchForBook = (event) => {
-  BooksAPI.search(event.target.value).then((books) => {
-  if (books === 'undefined' || books.error==='empty query') 
-  {
-      this.setState({books: []})
-  } else {
-      this.setState({books: books})
-  }})
+  if (event.target.value !== '') {
+    BooksAPI.search(event.target.value).then((books) => {
+    if (books === 'undefined' || books.error==='empty query') 
+    {
+        this.setState({books: []})
+    } else {
+        this.setState({books: books})
+    }})
+  } else this.setState({books: []})
 }
 
 updateBook = (book, shelf) => {
