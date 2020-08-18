@@ -32,6 +32,7 @@ render () {
                 <Shelf 
                   name={name} 
                   books={this.props.books}
+                  updateBook={this.props.updateBook}
                 />
               </li>)
             )}

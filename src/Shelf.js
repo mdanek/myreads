@@ -20,7 +20,7 @@ render () {
         <div className="bookshelf-books">
             <ul className="books-grid">
                 {this.props.books.map((book) => book.shelf === this.props.name
-                    && (<li key={book.id}><Book book={book}/></li>)  
+                    && (<li key={book.id}><Book book={book} updateBook={this.props.updateBook} /></li>)  
                 )}
             </ul>
         </div>

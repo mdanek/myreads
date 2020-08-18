@@ -38,7 +38,7 @@ render () {
             <div className="search-books-results">
                 <ol className="books-grid">
                     {this.props.books.map((book) => 
-                        (<li key={book.id}><Book book={book} />}</li>)
+                        (<li key={book.id}><Book book={book} updateBook={this.props.updateBook} />}</li>)
                     )}
                 </ol>
             </div>

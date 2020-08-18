@@ -33,7 +33,10 @@ searchForBook = (event) => {
 }
 
 updateBook = (book, shelf) => {
-  BooksAPI.update(book, shelf).then((cos) => console.log(cos))
+  console.log('poleci update');
+  if(book) {
+    BooksAPI.update(book, shelf).then((cos) => console.log(cos))
+  }
 }
 
 render() {
@@ -50,7 +53,8 @@ render() {
       : <BookApp 
           books={this.state.books}
           booksState={this.booksState}
-          clickSearch={this.clickSearch} 
+          clickSearch={this.clickSearch}
+          updateBook={this.updateBook}
         />}
     </div>)
   }
